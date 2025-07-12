@@ -190,7 +190,6 @@ namespace BetterPawnControl
                         {
                             ScheduleManager.CopySchedule(l.schedule, p.timetable.times);
                         }
-                        p.Tick();
                     }
                 }
             }
