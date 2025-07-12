@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<BPC.Auto>Авто</BPC.Auto>
-	<BPC.Rename>Переименовать</BPC.Rename>
+	<BPC.Auto>Умолчание</BPC.Auto>
+	<BPC.Rename>Переим.</BPC.Rename>
 	<BPC.Settings>Настройки политик</BPC.Settings>
 
 	<BPC.NewAnimalPolicy>Новая политика питомцев</BPC.NewAnimalPolicy>
@@ -39,11 +39,29 @@
 	<BPC.MechTab>Мехи</BPC.MechTab>
 	<BPC.WeaponsTab>Оружие</BPC.WeaponsTab>
 	<BPC.RobotsTab>Роботы</BPC.RobotsTab>
+
+	<BPC.PoliciesConfigText>Создавайте/удаляйте/переименовывайте предварительные настройки политик. Не забудьте после настроить их на каждой вкладке</BPC.PoliciesConfigText>
 	
+	<BPC.DefaultsConfigText>Определите, какие правила следует устанавливать, когда новая пешка присоединяется к колонии</BPC.DefaultsConfigText>
 	<BPC.SelectedDefaultOutfit>Снаряжение</BPC.SelectedDefaultOutfit>
+	<BPC.SelectedDefaultFood>Еда</BPC.SelectedDefaultFood>
 	<BPC.SelectedDefaultDrug>Наркотики</BPC.SelectedDefaultDrug>
-	<BPC.SelectedDefaultFood>Еда колонистов</BPC.SelectedDefaultFood>
-	<BPC.SelectedPrisonerDefaultFood>Еда заключенных</BPC.SelectedPrisonerDefaultFood>
+	<BPC.SelectedDefaultReading>Чтение</BPC.SelectedDefaultReading>
+	<BPC.SelectedDefaultMeds>Медицинская помощь</BPC.SelectedDefaultMeds>
+	<BPC.SelectedDefaultWeapons>Оружие</BPC.SelectedDefaultWeapons>
+	
+	<BPC.SelectedPrisonerDefaultFood>Еда</BPC.SelectedPrisonerDefaultFood>
+	<BPC.SelectedPrisonerDefaultMeds>Медицинская помощь</BPC.SelectedPrisonerDefaultMeds>
+	
+	<BPC.SelectedSlaveDefaultOutfit>Снаряжение</BPC.SelectedSlaveDefaultOutfit>	
+	<BPC.SelectedSlaveDefaultFood>Еда</BPC.SelectedSlaveDefaultFood>
+	<BPC.SelectedSlaveDefaultDrugs>Наркотики</BPC.SelectedSlaveDefaultDrugs>
+	<BPC.SelectedSlaveDefaultReading>Чтение</BPC.SelectedSlaveDefaultReading>
+	<BPC.SelectedSlaveDefaultMeds>Медицинская помощь</BPC.SelectedSlaveDefaultMeds>
+	
+	<BPC.ColonistDefaultHeader>Умолчания колонистов</BPC.ColonistDefaultHeader>
+	<BPC.PrisonerDefaultHeader>Умолчания заключенных</BPC.PrisonerDefaultHeader>
+	<BPC.SlaveDefaultHeader>Умолчания рабов</BPC.SlaveDefaultHeader>
 	
 	<BPC.Copy>Копировать политику</BPC.Copy>
 	<BPC.Paste>Вставить политику</BPC.Paste>
@@ -51,4 +69,15 @@
 	<BPC.CopySchedule>Копировать расписание</BPC.CopySchedule>
 	<BPC.PasteSchedule>Вставить расписание</BPC.PasteSchedule>
 	
+	<BPC.ToggleEmergencyOn>Отключите аварийный режим. Для политик будут установлены предыдущие настройки, существовавшие до включения аварийного режима</BPC.ToggleEmergencyOn>
+	<BPC.ToggleEmergencyOff>Включите аварийный режим. Укажите, какие политики должны быть активированы для всех вкладок в конфигурации Better Pawn Control.</BPC.ToggleEmergencyOff>
+	<BPC.AlertConfigText>Настройте, какие политики следует активировать при включении аварийного режима. Используйте сочетание клавиш для включения/выключения аварийного режима</BPC.AlertConfigText>
+	<BPC.EmergencyLocationTooltip>Кнопка аварийного режима находится в правом нижнем углу игрового окна, рядом с кнопками переключения</BPC.EmergencyLocationTooltip>
+	
+	<BPC.BetterPawnControlSettingsName>Better Pawn Control</BPC.BetterPawnControlSettingsName>
+	<BPC.AutomaticPawnsInterruptSetting>Следует ли автоматически прерывать все, что делают пешки, при включении аварийного режима</BPC.AutomaticPawnsInterruptSetting>	
+	<BPC.DisableBPCOnWorkTabSetting>Полностью отключить интеграцию BPC с модом на вкладке назначений?</BPC.DisableBPCOnWorkTabSetting>
+	<BPC.DisableBPCOnWorkTabTooltip>Полная интеграция, включая изменение внутренних (или расширенных) приоритетов мода WorkTab.</BPC.DisableBPCOnWorkTabTooltip>
+	<BPC.DisableBPCWorkTabInnerPrioritiesSetting>Отключить интеграцию BPC с внутренними (или расширенными) приоритетами мода WorkTab и сохранить "обычные" приоритеты?</BPC.DisableBPCWorkTabInnerPrioritiesSetting>
+	<BPC.DisableBPCWorkTabInnerPrioritiesTooltip>Это позволит продолжать использовать BPC с модом WorkTab, но без сохранения внутренних приоритетов.</BPC.DisableBPCWorkTabInnerPrioritiesTooltip>	
 </LanguageData>

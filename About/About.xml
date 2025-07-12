@@ -23,6 +23,7 @@ v2.7.7 - Fixed a crash in BPC settings window if WeaponsTabReborn mod was not fu
 v2.7.6 - Fixed translations; Added Copy/Paste MechTab and to WeaponsTab; Fixed minor bugs;
 v2.7.5 - Updated translations; Fixed AssignTab policies Copy-Paste bug 
 v2.7.4 - Added Medical UI + Compatibility with Misc. Robots + Improved integration with Achtung! Rescue job 
+v2.7.5 - Add 1.6 version support.
 
 
 Mod Integrations List:                       
