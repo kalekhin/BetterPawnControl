@@ -55,8 +55,8 @@ namespace BetterPawnControl
                 //find mech on the current zone
                 MechLink MechLink =
                     MechManager.links.Find(
-                        mechLink => (mechLink?.mech?.Equals(p) ?? false) &&
-                        mechLink.zone == MechManager.GetActivePolicy().id &&
+                        mechLink => Equals(mechLink?.mech, p) &&
+                        mechLink?.zone == MechManager.GetActivePolicy().id &&
                         mechLink.mapId == currentMap);
 
                 if (MechLink != null)
@@ -114,7 +114,7 @@ namespace BetterPawnControl
                 {
                     foreach (MechLink mechLink in zoneLinks)
                     {
-                        if (mechLink.mech?.Equals(p) ?? false)
+                        if (Equals(mechLink.mech, p))
                         {
                             //found mech in zone. Load state
                             foreach (MechanitorControlGroup group in p.GetMechControlGroup().Tracker.controlGroups)

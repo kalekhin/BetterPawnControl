@@ -205,9 +205,9 @@ namespace BetterPawnControl
             {
                 //find colonist on the current zone in the current map
                 AssignLink link = AssignManager.links.Find(
-                    assignLink => (assignLink?.colonist?.Equals(p) ?? false) &&
-                         assignLink.zone == AssignManager.GetActivePolicy().id &&
-                         assignLink.mapId == currentMap);
+                    assignLink => Equals(assignLink?.colonist, p) &&
+                                  assignLink?.zone == AssignManager.GetActivePolicy().id &&
+                                  assignLink.mapId == currentMap);
 
                 if (link != null)
                 {

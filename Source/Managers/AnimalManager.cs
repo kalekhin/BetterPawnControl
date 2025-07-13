@@ -46,8 +46,8 @@ namespace BetterPawnControl
                 //find animal on the current zone
                 AnimalLink animalLink =
                     AnimalManager.links.Find(
-                        link => (link?.animal?.Equals(p) ?? false) &&
-                        link.zone == AnimalManager.GetActivePolicy().id &&
+                        link => Equals(link?.animal, p) &&
+                        link?.zone == AnimalManager.GetActivePolicy().id &&
                         link.mapId == currentMap);
 
                 if (animalLink != null)
@@ -126,7 +126,7 @@ namespace BetterPawnControl
             {
                 foreach (AnimalLink link in zoneLinks)
                 {
-                    if (link.animal?.Equals(p) ?? false)
+                    if (Equals(link.animal, p))
                     {
                         //found animal in zone. Update master if alive
                         p.playerSettings.Master = (link.master != null && link.master.Dead) ? null : link.master;

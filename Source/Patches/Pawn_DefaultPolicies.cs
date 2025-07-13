@@ -11,7 +11,7 @@ namespace BetterPawnControl
         {
             if (___pawn != null)
             {
-                if (___pawn.IsFreeColonist && !AssignManager.links.Exists(x => ___pawn.Equals(x.colonist)))
+                if (___pawn.IsFreeColonist && !AssignManager.links.Exists(x => Equals(___pawn, x?.colonist)))
                 {
                     //became a new free colonist 
                     AssignManager.SetDefaultsForFreeColonist(___pawn);

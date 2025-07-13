@@ -55,8 +55,8 @@ namespace BetterPawnControl
             {
                 //find colonist in the current zone in the current map
                 ScheduleLink link = ScheduleManager.links.Find(
-                    scheduleLink => (scheduleLink?.colonist?.Equals(p) ?? false) &&
-                                    scheduleLink.zone == activePolicyId &&
+                    scheduleLink => Equals(scheduleLink?.colonist, p) &&
+                                    scheduleLink?.zone == activePolicyId &&
                                     scheduleLink.mapId == currentMap);
 
                 if (link != null)
@@ -183,7 +183,7 @@ namespace BetterPawnControl
             {
                 foreach (ScheduleLink scheduleLink in zoneLinks)
                 {
-                    if (scheduleLink.colonist?.Equals(p) ?? false)
+                    if (Equals(scheduleLink.colonist, p))
                     {
                         p.playerSettings.AreaRestrictionInPawnCurrentMap = scheduleLink.area;
                         if (scheduleLink.schedule != null && p.timetable != null)

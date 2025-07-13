@@ -63,7 +63,7 @@ namespace BetterPawnControl
             {
                 WeaponsLink weaponLink =
                     WeaponsManager.links.Find(
-                        weaponsLink => (weaponsLink.colonist?.Equals(p) ?? false) &&
+                        weaponsLink => Equals(weaponsLink.colonist, p) &&
                         weaponsLink.zone == WeaponsManager.GetActivePolicy().id &&
                         weaponsLink.mapId == currentMap);
 
@@ -115,7 +115,7 @@ namespace BetterPawnControl
             {
                 foreach (WeaponsLink l in zoneLinks)
                 {
-                    if (l.colonist?.Equals(p) ?? false)
+                    if (Equals(l.colonist, p))
                     {
                         Widget_WeaponsTabReborn.SetLoadoutId(p, l.loadoutId);
                     }
