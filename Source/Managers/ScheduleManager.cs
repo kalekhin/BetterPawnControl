@@ -55,9 +55,9 @@ namespace BetterPawnControl
             {
                 //find colonist in the current zone in the current map
                 ScheduleLink link = ScheduleManager.links.Find(
-                    x => p.Equals(x.colonist) &&
-                    x.zone == activePolicyId &&
-                    x.mapId == currentMap);
+                    scheduleLink => (scheduleLink?.colonist?.Equals(p) ?? false) &&
+                                    scheduleLink.zone == activePolicyId &&
+                                    scheduleLink.mapId == currentMap);
 
                 if (link != null)
                 {
@@ -181,14 +181,14 @@ namespace BetterPawnControl
 
             foreach (Pawn p in pawns)
             {
-                foreach (ScheduleLink l in zoneLinks)
+                foreach (ScheduleLink scheduleLink in zoneLinks)
                 {
-                    if (l.colonist != null && l.colonist.Equals(p))
+                    if (scheduleLink.colonist?.Equals(p) ?? false)
                     {
-                        p.playerSettings.AreaRestrictionInPawnCurrentMap = l.area;
-                        if (l.schedule != null && p.timetable != null)
+                        p.playerSettings.AreaRestrictionInPawnCurrentMap = scheduleLink.area;
+                        if (scheduleLink.schedule != null && p.timetable != null)
                         {
-                            ScheduleManager.CopySchedule(l.schedule, p.timetable.times);
+                            ScheduleManager.CopySchedule(scheduleLink.schedule, p.timetable.times);
                         }
                     }
                 }

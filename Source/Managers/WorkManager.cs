@@ -47,9 +47,9 @@ namespace BetterPawnControl
             {
                 //find colonist in the current zone in the current map
                 WorkLink link = WorkManager.links.Find(
-                    x => p.Equals(x.colonist) &&
-                    x.zone == WorkManager.GetActivePolicy().id &&
-                    x.mapId == currentMap);
+                    workLink => (workLink.colonist?.Equals(p) ?? false) &&
+                                workLink.zone == WorkManager.GetActivePolicy().id &&
+                                workLink.mapId == currentMap);
                 if (link != null)
                 {
                     //colonist found! save  
@@ -127,20 +127,17 @@ namespace BetterPawnControl
 
         internal static void LoadState(List<WorkLink> links, List<Pawn> pawns, Policy policy)
         {
-            List<WorkLink> mapLinks = null;
-            List<WorkLink> zoneLinks = null;
-            int currentMap = Find.CurrentMap.uniqueID;
-
+            var currentMap = Find.CurrentMap.uniqueID;
             //get all links from the current map
-            mapLinks = links.FindAll(x => x.mapId == currentMap);
+            var mapLinks = links.FindAll(x => x.mapId == currentMap);
             //get all links from the selected zone
-            zoneLinks = mapLinks.FindAll(x => x.zone == policy.id);
+            var zoneLinks = mapLinks.FindAll(x => x.zone == policy.id);
 
             foreach (Pawn p in pawns)
             {
                 foreach (WorkLink l in zoneLinks)
                 {
-                    if (l.colonist != null && l.colonist.Equals(p))
+                    if (l.colonist?.Equals(p) ?? false)
                     {
                         WorkManager.LoadPawnPriorities(p, l);
                     }

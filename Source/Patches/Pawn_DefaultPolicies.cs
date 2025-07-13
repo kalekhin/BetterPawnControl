@@ -7,54 +7,29 @@ namespace BetterPawnControl
     [HarmonyPatch(typeof(Pawn_GuestTracker), nameof(Pawn_GuestTracker.SetGuestStatus))]
     static class Pawn_GuestTracker_SetGuestStatus
     {
-        static void Postfix(Pawn ___pawn)
+        static void Postfix(Pawn pawn)
         {
-            if (___pawn != null)
-            {
-                if (___pawn.IsFreeColonist && !AssignManager.links.Exists(x => ___pawn.Equals(x.colonist)))
-                {
-                    //became a new free colonist 
-                    AssignManager.SetDefaultsForFreeColonist(___pawn);
-                }
-
-                if (___pawn.IsPrisoner)
-                {
-                    //former free colonist become prisoner
-                    AssignManager.SetDefaultsForPrisoner(___pawn);
-                }
-
-
-                if (___pawn.IsSlave)
-                {
-                    //former free colonist become a slave
-                    AssignManager.SetDefaultsForSlave(___pawn);
-                }
-            }
+            if (pawn == null) return;
+            //became a new free colonist 
+            if (pawn.IsFreeColonist 
+                && !AssignManager.links.Exists(assignLink => assignLink?.colonist?.Equals(pawn) ?? false))
+                AssignManager.SetDefaultsForFreeColonist(pawn);
+            //former free colonist become prisoner
+            if (pawn.IsPrisoner) AssignManager.SetDefaultsForPrisoner(pawn);
+            //former free colonist become a slave
+            if (pawn.IsSlave) AssignManager.SetDefaultsForSlave(pawn);
         }
     }
 
     [HarmonyPatch(typeof(Faction), nameof(Faction.Notify_PawnJoined))]
     static class Faction_Notify_PawnJoined
     {
-        static void Postfix(Pawn p)
+        static void Postfix(Pawn pawn)
         {
-            if (p != null)
-            {
-                if (p.IsFreeColonist)
-                {
-                    AssignManager.SetDefaultsForFreeColonist(p);
-                }
-
-                if (p.IsPrisoner)
-                {
-                    AssignManager.SetDefaultsForPrisoner(p);
-                }
-
-                if (p.IsSlave) 
-                {
-                    AssignManager.SetDefaultsForSlave(p);
-                }
-            }
+            if (pawn == null) return;
+            if (pawn.IsFreeColonist) AssignManager.SetDefaultsForFreeColonist(pawn);
+            if (pawn.IsPrisoner) AssignManager.SetDefaultsForPrisoner(pawn);
+            if (pawn.IsSlave) AssignManager.SetDefaultsForSlave(pawn);
         }
     }
 }

@@ -54,9 +54,9 @@ namespace BetterPawnControl
             {
                 // find robot in the current zone
                 var robotLink = links.Find(
-                    x => x != null && p.Equals(x.robot) &&
-                    x.zone == GetActivePolicy().id &&
-                    x.mapId == currentMap);
+                    link => (link?.robot?.Equals(p) ?? false) &&
+                            link.zone == GetActivePolicy().id &&
+                            link.mapId == currentMap);
 
                 if (robotLink != null)
                 {

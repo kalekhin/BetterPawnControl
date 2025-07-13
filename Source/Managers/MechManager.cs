@@ -55,9 +55,9 @@ namespace BetterPawnControl
                 //find mech on the current zone
                 MechLink MechLink =
                     MechManager.links.Find(
-                        x => x != null && p.Equals(x.mech) &&
-                        x.zone == MechManager.GetActivePolicy().id &&
-                        x.mapId == currentMap);
+                        mechLink => (mechLink?.mech?.Equals(p) ?? false) &&
+                        mechLink.zone == MechManager.GetActivePolicy().id &&
+                        mechLink.mapId == currentMap);
 
                 if (MechLink != null)
                 {
@@ -76,7 +76,7 @@ namespace BetterPawnControl
                             p.GetMechControlGroup().Index,
                             p.GetMechWorkMode(),
                             p.playerSettings.AreaRestrictionInPawnCurrentMap,
-                            currentMap)); ; ;
+                            currentMap));
                 }
             }
         }
@@ -112,21 +112,21 @@ namespace BetterPawnControl
             {
                 if (p.GetOverseer() != null)
                 {
-                    foreach (MechLink l in zoneLinks)
+                    foreach (MechLink mechLink in zoneLinks)
                     {
-                        if (l.mech != null && l.mech.Equals(p))
+                        if (mechLink.mech?.Equals(p) ?? false)
                         {
                             //found mech in zone. Load state
                             foreach (MechanitorControlGroup group in p.GetMechControlGroup().Tracker.controlGroups)
                             {
-                                if (group.Index == l.controlGroupIndex && p.GetMechControlGroup().Index != l.controlGroupIndex)
+                                if (group.Index == mechLink.controlGroupIndex && p.GetMechControlGroup().Index != mechLink.controlGroupIndex)
                                 {
                                     // Only load assign group if it's actually a different group. This is to avoid the mech to leave recharge task if the same group is assigned
                                     group.Assign(p);
                                 }
                             }
-                            p.GetMechControlGroup().SetWorkMode(l.workmode);  
-                            p.playerSettings.AreaRestrictionInPawnCurrentMap = l.area;
+                            p.GetMechControlGroup().SetWorkMode(mechLink.workmode);  
+                            p.playerSettings.AreaRestrictionInPawnCurrentMap = mechLink.area;
                         }
                     }
                 }                

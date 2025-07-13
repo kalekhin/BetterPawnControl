@@ -46,9 +46,9 @@ namespace BetterPawnControl
                 //find animal on the current zone
                 AnimalLink animalLink =
                     AnimalManager.links.Find(
-                        x => x != null && x.animal != null && p.Equals(x.animal) &&
-                        x.zone == AnimalManager.GetActivePolicy().id &&
-                        x.mapId == currentMap);
+                        link => (link?.animal?.Equals(p) ?? false) &&
+                        link.zone == AnimalManager.GetActivePolicy().id &&
+                        link.mapId == currentMap);
 
                 if (animalLink != null)
                 {
@@ -124,19 +124,19 @@ namespace BetterPawnControl
 
             foreach (Pawn p in pawns)
             {
-                foreach (AnimalLink l in zoneLinks)
+                foreach (AnimalLink link in zoneLinks)
                 {
-                    if (l.animal != null && l.animal.Equals(p))
+                    if (link.animal?.Equals(p) ?? false)
                     {
                         //found animal in zone. Update master if alive
-                        p.playerSettings.Master = (l.master != null && l.master.Dead) ? null : l.master;
-                        p.playerSettings.AreaRestrictionInPawnCurrentMap = l.area;
-                        p.playerSettings.followDrafted = l.followDrafted;
-                        p.playerSettings.followFieldwork = l.followFieldwork;
+                        p.playerSettings.Master = (link.master != null && link.master.Dead) ? null : link.master;
+                        p.playerSettings.AreaRestrictionInPawnCurrentMap = link.area;
+                        p.playerSettings.followDrafted = link.followDrafted;
+                        p.playerSettings.followFieldwork = link.followFieldwork;
                         if (Widget_ModsAvailable.AAFAvailable)
                         {
-                            p.foodRestriction.CurrentFoodPolicy = FoodPolicyExists(l.foodPolicy) ?
-                                l.foodPolicy : null;
+                            p.foodRestriction.CurrentFoodPolicy = FoodPolicyExists(link.foodPolicy) ?
+                                link.foodPolicy : null;
                         }                            
                     }
                 }
